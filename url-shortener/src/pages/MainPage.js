@@ -48,7 +48,7 @@ function MainPage() {
         },
       })
         .then((response) => {
-          setUrls((prevUrls) => prevUrls.concat({shortcode: response.data.shortcode, origin: url}));
+          setUrls((prevUrls) => [{shortcode: response.data.shortcode, origin: url}, ...prevUrls]);
         })
         .catch((err) => {
           console.log(err);
