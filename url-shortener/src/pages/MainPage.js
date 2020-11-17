@@ -7,6 +7,7 @@ import Table from "../components/Table";
 import "../styles/MainPage.css";
 
 function MainPage() {
+  const baseUrl = "https://impraise-shorty.herokuapp.com";
   const APIUrl = "http://localhost:8080/https://impraise-shorty.herokuapp.com";
 
   const [url, setUrl] = useState("");
@@ -47,7 +48,7 @@ function MainPage() {
         },
       })
         .then((response) => {
-          setUrls((prevUrls) => prevUrls.concat(response.data.shortcode));
+          setUrls((prevUrls) => prevUrls.concat({shortcode: response.data.shortcode, origin: url}));
         })
         .catch((err) => {
           console.log(err);
@@ -70,7 +71,7 @@ function MainPage() {
         <h4 className="text-muted">Previously shortened by you</h4>
         <p className="text-danger" id="clear-history" onClick={handleClearHistory}>clear history</p>
       </div>
-      <Table urls={urls} APIUrl={APIUrl} url={url} />
+      <Table urls={urls} baseUrl={baseUrl} />
     </div>
   );
 }

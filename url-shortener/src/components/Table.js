@@ -19,14 +19,14 @@ function Table(props) {
             {props.urls.map((element, i) => {
               return (
                 <tr key={i}>
-                  <td>{props.url}</td>
+                  <td>{element.origin}</td>
                   <td>
                     <a
                       target="_blank"
                       rel="noreferrer"
-                      href={`${props.APIUrl}/${element}`}
+                      href={`${props.baseUrl}/${element.shortcode}`}
                     >
-                      {props.APIUrl}/{element}
+                      {props.baseUrl}/{element.shortcode}
                     </a>
                   </td>
                 </tr>
